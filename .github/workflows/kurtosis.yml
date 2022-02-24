@@ -41,8 +41,8 @@ jobs:
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
         with:
-          input: ./deployment.yaml.tmpl
-          output: ./deployment.yaml
+          input: ./config.json.tmpl
+          output: ./config.json
         env:
             TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
             NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
