@@ -1,0 +1,29 @@
+name: Scheduled kurtosis run
+# This workflow is triggered on pushes to the repository.
+on:
+ workflow_dispatch:
+ schedule:
+   - cron: '0 3 * * *'
+
+env:
+    TEKU_IMAGE: "consensys/teku"
+    NIMBUS_IMAGE: "parithoshj/nimbus"
+    PRYSM_BEACON_IMAGE: "gcr.io/prysmaticlabs/prysm/beacon-chain"
+    PRYSM_VALIDATOR_IMAGE: "gcr.io/prysmaticlabs/prysm/validator"
+    LIGHTHOUSE_IMAGE: "sigp/lighthouse:latest-unstable"
+    LODESTAR_IMAGE: "chainsafe/lodestar:next"
+    GETH_IMAGE: "parithoshj/geth"
+    NETHERMIND_IMAGE: "nethermindeth/nethermind:kiln_0.2"
+jobs:
+  kurtosis:
+    name: kurtosis
+    runs-on: self-hosted
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@master
+      - name: fetch image name
+        id: fetch_image_name
+        shell: bash
+        run: |
+          echo "::set-output name=image-tag::$(./fetch-latest-image-tags.sh ${{ matrix.docker-image-name }})"
+          echo ${{ env.NIMBUS_IMAGE }}:$(./fetch-latest-image-tags.sh ${{ env.NIMBUS_IMAGE }})
