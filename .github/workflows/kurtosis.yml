@@ -18,6 +18,7 @@ jobs:
   kurtosis:
     name: kurtosis
 #     runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout this repo
         uses: actions/checkout@master
