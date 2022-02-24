@@ -26,7 +26,7 @@ jobs:
         id: fetch_image_name
         shell: bash
         run: |
-          echo "::set-output name=teku_image::consensys/teku:develop)"
+          echo "::set-output name=teku_image::consensys/teku:develop"
           echo "::set-output name=nimbus_image::$(./fetch-latest-image-tags.sh ${{ env.NIMBUS_IMAGE }})"
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.teku_image }}
