@@ -52,3 +52,5 @@ jobs:
             LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
+      - name: cat file
+        run: cat ./config.json
