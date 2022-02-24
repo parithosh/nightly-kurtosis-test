@@ -13,7 +13,7 @@ env:
     LIGHTHOUSE_IMAGE: "sigp/lighthouse:latest-unstable"
     LODESTAR_IMAGE: "chainsafe/lodestar:next"
     GETH_IMAGE: "parithoshj/geth"
-    NETHERMIND_IMAGE: "nethermindeth/nethermind:kiln_0.2"
+    NETHERMIND_IMAGE: "nethermindeth/nethermind"
 jobs:
   kurtosis:
     name: kurtosis
@@ -28,7 +28,27 @@ jobs:
         run: |
           echo "::set-output name=teku_image::consensys/teku:develop"
           echo "::set-output name=nimbus_image::$(./fetch-latest-image-tags.sh ${{ env.NIMBUS_IMAGE }})"
+          echo "::set-output name=prysm_beacon_image::gcr.io/prysmaticlabs/prysm/beacon-chain:kiln-1e32cd"
+          echo "::set-output name=prysm_validator_image::gcr.io/prysmaticlabs/prysm/validator:kiln-a424f5"
+          echo "::set-output name=lighthouse_image::sigp/lighthouse:latest-unstable"
+          echo "::set-output name=lodestar_image::chainsafe/lodestar:next"
+          echo "::set-output name=geth_image::$(./fetch-latest-image-tags.sh ${{ env.GETH_IMAGE }})"
+          echo "::set-output name=nethermind_image::nethermindeth/nethermind:kiln_0.2"
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.teku_image }}
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.nimbus_image }}
+      - name: Render Deployment YAML
+        uses: nowactions/envsubst@v1
+        with:
+          input: ./deployment.yaml.tmpl
+          output: ./deployment.yaml
+        env:
+            TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
+            NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
+            PRYSM_BEACON_IMAGE: ${{ steps.fetch_image_name.outputs.prysm_beacon_image }}
+            PRYSM_VALIDATOR_IMAGE: ${{ steps.fetch_image_name.outputs.prysm_validator_image }}
+            LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
+            LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
+            GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
+            NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
