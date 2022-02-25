@@ -22,11 +22,12 @@ jobs:
     steps:
       - name: Checkout this repo
         uses: actions/checkout@master
-      - name: Update kurtosis to latest
+      - name: Update kurtosis to latest and set metrics choice
         shell: bash
         run: |
             sudo apt update
-            sudo upt upgrade kurtosis
+            sudo apt upgrade kurtosis
+            kurtosis config init send-metrics
       - name: fetch image name
         id: fetch_image_name
         shell: bash
