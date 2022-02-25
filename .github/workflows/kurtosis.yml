@@ -27,7 +27,6 @@ jobs:
         run: |
             sudo apt update
             sudo apt upgrade kurtosis-cli
-            kurtosis config init send-metrics
       - name: fetch image name
         id: fetch_image_name
         shell: bash
