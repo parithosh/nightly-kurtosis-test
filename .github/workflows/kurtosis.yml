@@ -32,7 +32,7 @@ jobs:
         id: fetch_image_name
         shell: bash
         run: |
-          echo "::set-output name=teku_image::consensys/teku@sha256:304541717f009efe3ed4ec04db3958aed0e119013d30312ec4d6cd05d0c95942"
+          echo "::set-output name=teku_image::consensys/teku:develop"
           echo "::set-output name=nimbus_image::$(./fetch-latest-image-tags.sh ${{ env.NIMBUS_IMAGE }})"
           echo "::set-output name=prysm_beacon_image::gcr.io/prysmaticlabs/prysm/beacon-chain:kiln-1e32cd"
           echo "::set-output name=prysm_validator_image::gcr.io/prysmaticlabs/prysm/validator:kiln-a424f5"
