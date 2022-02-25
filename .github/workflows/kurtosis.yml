@@ -18,7 +18,8 @@ jobs:
   kurtosis:
     name: kurtosis
     runs-on: kurtosis
-#     runs-on: ubuntu-latest
+    # Increase timeout if we add more difficult tests that take longer!
+    timeout-minutes: 60
     steps:
       - name: Checkout this repo
         uses: actions/checkout@master
@@ -59,8 +60,6 @@ jobs:
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id newname kurtosistech/eth2-merge-kurtosis-module  --execute-params "$(cat ./config.json)"
-      - name: Remove module and cleanup
-        run: kurtosis enclave rm newname --force
   cleanup:
     runs-on: kurtosis
     needs: [kurtosis]
