@@ -60,6 +60,14 @@ jobs:
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id newname kurtosistech/eth2-merge-kurtosis-module  --execute-params "$(cat ./config.json)"
+      - name: Run kurtosis with the config
+        if: always()
+        run: kurtosis enclave dump newname dumped_logs
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: dumped_logs
+          path: ./dumped_logs
   cleanup:
     runs-on: kurtosis
     needs: [kurtosis]
