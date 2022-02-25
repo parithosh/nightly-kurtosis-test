@@ -22,6 +22,11 @@ jobs:
     steps:
       - name: Checkout this repo
         uses: actions/checkout@master
+      - name: Update kurtosis to latest
+        shell: bash
+        run: |
+            sudo apt update
+            sudo upt upgrade kurtosis
       - name: fetch image name
         id: fetch_image_name
         shell: bash
@@ -52,5 +57,14 @@ jobs:
             LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
-      - name: cat file
-        run: cat ./config.json
+      - name: Run kurtosis with the config
+        run: kurtosis module exec --enclave-id newname kurtosistech/eth2-merge-kurtosis-module  --execute-params "$(cat ./config.json)"
+      - name: Remove module and cleanup
+        run: kurtosis enclave rm newname --force
+  cleanup:
+    runs-on: kurtosis
+    needs: [kurtosis]
+    if: always()
+    steps:
+      - name: Cleanup
+        run: kurtosis enclave rm newname --force
