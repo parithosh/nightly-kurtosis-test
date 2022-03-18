@@ -32,14 +32,14 @@ jobs:
         id: fetch_image_name
         shell: bash
         run: |
-          echo "::set-output name=teku_image::consensys/teku@sha256:304541717f009efe3ed4ec04db3958aed0e119013d30312ec4d6cd05d0c95942"
+          echo "::set-output name=teku_image::consensys/teku:develop"
           echo "::set-output name=nimbus_image::$(./fetch-latest-image-tags.sh ${{ env.NIMBUS_IMAGE }})"
-          echo "::set-output name=prysm_beacon_image::gcr.io/prysmaticlabs/prysm/beacon-chain:kiln-1e32cd"
-          echo "::set-output name=prysm_validator_image::gcr.io/prysmaticlabs/prysm/validator:kiln-a424f5"
+          echo "::set-output name=prysm_beacon_image::gcr.io/prysmaticlabs/prysm/beacon-chain:kiln-3ea8b7"
+          echo "::set-output name=prysm_validator_image::gcr.io/prysmaticlabs/prysm/validator:kiln-ee1ee6"
           echo "::set-output name=lighthouse_image::sigp/lighthouse:latest-unstable"
           echo "::set-output name=lodestar_image::chainsafe/lodestar:next"
           echo "::set-output name=geth_image::$(./fetch-latest-image-tags.sh ${{ env.GETH_IMAGE }})"
-          echo "::set-output name=nethermind_image::nethermindeth/nethermind:kiln_0.2"
+          echo "::set-output name=nethermind_image::nethermindeth/nethermind:kiln_0.8"
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.teku_image }}
       - name: Image digest
@@ -59,7 +59,7 @@ jobs:
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id newname kurtosistech/eth2-merge-kurtosis-module  --execute-params "$(cat ./config.json)"
+        run: kurtosis module exec --enclave-id newname parithoshj/kurtosis:auth  --execute-params "$(cat ./config.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump newname dumped_logs
