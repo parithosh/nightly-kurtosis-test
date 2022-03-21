@@ -32,7 +32,7 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        cl-client-name: ["teku", "nimbus"]
+        cl-client-name: ["teku", "nimbus", "lighthouse", "prysm", "lodestar"]
     steps:
       - name: Checkout this repo
         uses: actions/checkout@master
