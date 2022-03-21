@@ -50,7 +50,7 @@ jobs:
           output_file: ./${{ matrix.cl-client-name }}-geth.json
           strict: true
           data_format: json
-          variables: |
+          env:
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             CL_IMAGE: ${{ steps.fetch_image_name.outputs.cl_image_name }}
             CL_NAME: ${{ matrix.cl-client-name }}
