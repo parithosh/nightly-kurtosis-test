@@ -50,10 +50,10 @@ jobs:
           output_file: ./${{ matrix.cl-client-name }}-geth.json
           strict: true
           data_format: json
-          env:
-            GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
-            CL_IMAGE: ${{ steps.fetch_image_name.outputs.cl_image_name }}
-            CL_NAME: ${{ matrix.cl-client-name }}
+        env:
+          GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
+          CL_IMAGE: ${{ steps.fetch_image_name.outputs.cl_image_name }}
+          CL_NAME: ${{ matrix.cl-client-name }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:auth  --execute-params "$(cat ./${{ matrix.cl-client-name }}-geth.json)"
       - name: Run kurtosis with the config
