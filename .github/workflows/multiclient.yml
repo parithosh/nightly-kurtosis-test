@@ -3,7 +3,7 @@ name: Scheduled multiclient kurtosis run
 on:
  workflow_dispatch:
  schedule:
-   - cron: '0 3 * * *'
+   - cron: '0 2 * * *'
 
 env:
     TEKU_IMAGE: "consensys/teku"
