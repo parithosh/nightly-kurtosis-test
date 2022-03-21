@@ -49,6 +49,7 @@ jobs:
           template: ./cl-geth.json.j2
           output_file: ./${{ matrix.cl-client-name }}-geth.json
           strict: true
+          data_format: json
           variables: |
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             CL_IMAGE: ${{ steps.fetch_image_name.outputs.cl_image_name }}
