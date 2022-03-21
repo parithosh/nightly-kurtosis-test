@@ -1,0 +1,69 @@
+name: Scheduled cl-nethermind majority testnets
+# This workflow is triggered on pushes to the repository.
+on:
+ workflow_dispatch:
+ schedule:
+   - cron: '0 3 * * *'
+
+env:
+    TEKU_IMAGE: "consensys/teku"
+    NIMBUS_IMAGE: "parithoshj/nimbus"
+    PRYSM_BEACON_IMAGE: "gcr.io/prysmaticlabs/prysm/beacon-chain"
+    PRYSM_VALIDATOR_IMAGE: "gcr.io/prysmaticlabs/prysm/validator"
+    LIGHTHOUSE_IMAGE: "sigp/lighthouse:latest-unstable"
+    LODESTAR_IMAGE: "chainsafe/lodestar:next"
+    GETH_IMAGE: "parithoshj/geth"
+    NETHERMIND_IMAGE: "nethermindeth/nethermind"
+jobs:
+  apt:
+    name: apt
+    runs-on: kurtosis
+    steps:
+      - name: Update kurtosis to latest and set metrics choice
+        shell: bash
+        run: sudo apt update && sudo apt upgrade kurtosis-cli
+  kurtosis:
+    name: kurtosis
+    runs-on: kurtosis
+    # Increase timeout if we add more difficult tests that take longer!
+    timeout-minutes: 120
+    needs: apt
+    strategy:
+      max-parallel: 2
+      fail-fast: false
+      matrix:
+        cl-client-name: ["teku", "lighthouse", "prysm", "lodestar"]
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@master
+      - name: fetch image name
+        id: fetch_image_name
+        shell: bash
+        run: |
+          echo "::set-output name=nethermind_image::nethermindeth/nethermind:kiln_0.10"
+          echo "::set-output name=cl_image_name::$(./return-cl-image-info.sh ${{ matrix.cl-client-name }})"
+          echo "::set-output name=enclave_name::${{ matrix.cl-client-name }}-nethermind"
+      - name: Render Deployment YAML
+        uses: cuchi/jinja2-action@v1.2.0
+        with:
+          template: ./cl-nethermind.json.j2
+          output_file: ./${{ matrix.cl-client-name }}-nethermind.json
+          strict: true
+          data_format: json
+        env:
+          NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
+          CL_IMAGE: ${{ steps.fetch_image_name.outputs.cl_image_name }}
+          CL_NAME: ${{ matrix.cl-client-name }}
+      - name: Run kurtosis with the config
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:auth  --execute-params "$(cat ./${{ matrix.cl-client-name }}-nethermind.json)"
+      - name: Run kurtosis with the config
+        if: always()
+        run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ steps.fetch_image_name.outputs.enclave_name }}
+          path: ./${{ steps.fetch_image_name.outputs.enclave_name }}
+      - name: Cleanup
+        if: always()
+        run: kurtosis enclave rm ${{ steps.fetch_image_name.outputs.enclave_name }} --force
