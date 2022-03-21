@@ -1,4 +1,4 @@
-name: Scheduled kurtosis run
+name: Scheduled cl-geth majority testnets
 # This workflow is triggered on pushes to the repository.
 on:
  workflow_dispatch:
