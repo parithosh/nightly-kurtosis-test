@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Update kurtosis to latest and set metrics choice
         shell: bash
-        run: sudo apt update && sudo apt upgrade kurtosis-cli
+        run: sudo apt update && sudo apt upgrade -y kurtosis-cli
   kurtosis:
     name: kurtosis
     runs-on: kurtosis
