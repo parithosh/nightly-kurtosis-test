@@ -39,7 +39,7 @@ jobs:
           echo "::set-output name=lighthouse_image::sigp/lighthouse:latest-unstable"
           echo "::set-output name=lodestar_image::chainsafe/lodestar:next"
           echo "::set-output name=geth_image::$(./fetch-latest-image-tags.sh ${{ env.GETH_IMAGE }})"
-          echo "::set-output name=nethermind_image::nethermindeth/nethermind:kiln_0.8"
+          echo "::set-output name=nethermind_image::nethermindeth/nethermind:kiln_0.11"
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.teku_image }}
       - name: Image digest
