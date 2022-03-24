@@ -42,10 +42,12 @@ jobs:
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.nimbus_image }}
       - name: Render Deployment YAML
-        uses: nowactions/envsubst@v1
+        uses: cuchi/jinja2-action@v1.2.0
         with:
-          input: ./config.json.tmpl
-          output: ./config.json
+          template: ./config.json.j2
+          output_file: ./config.json
+          strict: true
+          data_format: json
         env:
             TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
             NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
