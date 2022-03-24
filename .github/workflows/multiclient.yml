@@ -57,7 +57,7 @@ jobs:
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id newname parithoshj/kurtosis:auth  --execute-params "$(cat ./config.json)"
+        run: kurtosis module exec --enclave-id newname kurtosistech/eth2-merge-kurtosis-module  --execute-params "$(cat ./config.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump newname dumped_logs
