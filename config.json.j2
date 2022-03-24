@@ -16,7 +16,8 @@
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
       "clType": "nimbus",
-      "clImage": "{{ env['NIMBUS_IMAGE'] }}"
+      "clImage": "{{ env['NIMBUS_IMAGE'] }}",
+      "beaconExtraParams": ["--num-threads=1"]
     },
     {
       "elType": "geth",
@@ -46,7 +47,8 @@
       "elType": "nethermind",
       "elImage": "{{ env['NETHERMIND_IMAGE'] }}",
       "clType": "nimbus",
-      "clImage": "{{ env['NIMBUS_IMAGE'] }}"
+      "clImage": "{{ env['NIMBUS_IMAGE'] }}",
+      "beaconExtraParams": ["--num-threads=1"]
     },
     {
       "elType": "nethermind",
