@@ -29,7 +29,7 @@ jobs:
     timeout-minutes: 300
     needs: apt
     strategy:
-      max-parallel: 5
+      max-parallel: 3
       fail-fast: false
       matrix:
         cl-client-name: ["teku", "lighthouse", "prysm", "lodestar", "nimbus"]
@@ -57,7 +57,7 @@ jobs:
           CL_NAME: ${{ matrix.cl-client-name }}
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image_name }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} kurtosistech/eth2-merge-kurtosis-module  --execute-params "$(cat ./${{ matrix.cl-client-name }}-besu.json)"
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:nimbus-fix  --execute-params "$(cat ./${{ matrix.cl-client-name }}-besu.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}
