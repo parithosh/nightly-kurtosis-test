@@ -3,7 +3,7 @@ name: Scheduled cl-besu majority testnets
 on:
  workflow_dispatch:
  schedule:
-   - cron: '0 5 * * *'
+   - cron: '0 7 * * *'
 
 env:
     TEKU_IMAGE: "consensys/teku"
