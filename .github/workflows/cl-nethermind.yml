@@ -59,7 +59,7 @@ jobs:
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image_name }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:nethermind-fix  --execute-params "$(cat ./${{ matrix.cl-client-name }}-nethermind.json)"
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:nethermind-fix-2  --execute-params "$(cat ./${{ matrix.cl-client-name }}-nethermind.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}
