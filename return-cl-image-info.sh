@@ -25,5 +25,5 @@ then
     echo "nethermindeth/nethermind:kiln_test_sync"
 elif [[ $1 == "besu" ]]
 then
-    echo "hyperledger/besu:22.1.3-SNAPSHOT"
+    echo "hyperledger/besu:22.1.4-SNAPSHOT"
 fi
