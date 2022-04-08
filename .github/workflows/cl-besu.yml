@@ -59,7 +59,7 @@ jobs:
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image_name }}
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} kurtosistech/eth2-merge-kurtosis-module:0.4.15  --execute-params "$(cat ./${{ matrix.cl-client-name }}-besu.json)"
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:nimbus-timeout  --execute-params "$(cat ./${{ matrix.cl-client-name }}-besu.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}
