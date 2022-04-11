@@ -3,7 +3,7 @@ name: Scheduled cl-geth majority testnets
 on:
  workflow_dispatch:
  schedule:
-   - cron: '0 3 * * *'
+   - cron: '0 4 * * *'
 
 env:
     TEKU_IMAGE: "consensys/teku"
