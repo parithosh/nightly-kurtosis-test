@@ -19,11 +19,11 @@ then
     echo "chainsafe/lodestar:next"
 elif [[ $1 == "prysm" ]]
 then
-    echo "gcr.io/prysmaticlabs/prysm/beacon-chain:kiln-0a1e93,gcr.io/prysmaticlabs/prysm/validator:kiln-ee1ee6"
+    echo "gcr.io/prysmaticlabs/prysm/beacon-chain:latest,gcr.io/prysmaticlabs/prysm/validator:latest"
 elif [[ $1 == "nethermind" ]]
 then
-    echo "nethermindeth/nethermind:kiln_test_sync"
+    echo "nethermindeth/nethermind:kiln_yolo"
 elif [[ $1 == "besu" ]]
 then
-    echo "hyperledger/besu:22.1.4-SNAPSHOT"
+    echo "hyperledger/besu:22.4.0-RC2-SNAPSHOT"
 fi
