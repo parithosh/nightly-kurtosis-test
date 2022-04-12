@@ -37,6 +37,7 @@ jobs:
           echo "::set-output name=lodestar_image::$(./return-cl-image-info.sh lodestar)"
           echo "::set-output name=geth_image::$(./fetch-latest-image-tags.sh ${{ env.GETH_IMAGE }})"
           echo "::set-output name=nethermind_image::$(./return-cl-image-info.sh nethermind)"
+          echo "::set-output name=kurtosis_image_name::$(./return-cl-image-info.sh kurtosis)"
       - name: Image digest
         run: echo ${{ steps.fetch_image_name.outputs.teku_image }}
       - name: Image digest
@@ -57,7 +58,7 @@ jobs:
             GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
             NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id newname parithoshj/kurtosis:nimbus-timeout  --execute-params "$(cat ./config.json)"
+        run: kurtosis module exec --enclave-id newname ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./config.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump newname dumped_logs

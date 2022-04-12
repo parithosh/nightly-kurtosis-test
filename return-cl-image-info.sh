@@ -26,4 +26,7 @@ then
 elif [[ $1 == "besu" ]]
 then
     echo "hyperledger/besu:22.4.0-RC2-SNAPSHOT"
+elif [[ $1 == "kurtosis" ]]
+then
+    echo "parithoshj/kurtosis:prysm-flag-change"
 fi

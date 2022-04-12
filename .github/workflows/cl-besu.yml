@@ -45,6 +45,7 @@ jobs:
           echo "::set-output name=enclave_name::${{ matrix.cl-client-name }}-besu"
           echo "::set-output name=teku_image_name::$(./return-cl-image-info.sh teku)"
           echo "::set-output name=geth_image::$(./fetch-latest-image-tags.sh ${{ env.GETH_IMAGE }})"
+          echo "::set-output name=kurtosis_image_name::$(./return-cl-image-info.sh kurtosis)"
       - name: Render Deployment YAML
         uses: cuchi/jinja2-action@v1.2.0
         with:
@@ -59,7 +60,7 @@ jobs:
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image_name }}
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} parithoshj/kurtosis:nimbus-timeout  --execute-params "$(cat ./${{ matrix.cl-client-name }}-besu.json)"
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./${{ matrix.cl-client-name }}-besu.json)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}
