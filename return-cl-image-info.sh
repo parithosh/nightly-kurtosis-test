@@ -28,5 +28,5 @@ then
     echo "hyperledger/besu:22.4.0-RC2-SNAPSHOT"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "parithoshj/kurtosis:prysm-flag-change"
+    echo "kurtosistech/eth2-merge-kurtosis-module:0.4.16"
 fi
