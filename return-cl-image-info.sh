@@ -25,7 +25,7 @@ then
     echo "nethermindeth/nethermind:kiln_shadowfork_0.1"
 elif [[ $1 == "besu" ]]
 then
-    echo "hyperledger/besu:22.4.0-RC2-SNAPSHOT"
+    echo "hyperledger/besu:develop"
 elif [[ $1 == "kurtosis" ]]
 then
     echo "kurtosistech/eth2-merge-kurtosis-module:0.4.16"
