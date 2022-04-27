@@ -22,7 +22,7 @@ then
     echo "gcr.io/prysmaticlabs/prysm/beacon-chain:latest,gcr.io/prysmaticlabs/prysm/validator:latest"
 elif [[ $1 == "nethermind" ]]
 then
-    echo "nethermindeth/nethermind:kiln_yolo"
+    echo "nethermindeth/nethermind:kiln_shadowfork_0.1"
 elif [[ $1 == "besu" ]]
 then
     echo "hyperledger/besu:22.4.0-RC2-SNAPSHOT"
