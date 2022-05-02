@@ -27,7 +27,7 @@ jobs:
     runs-on: kurtosis
     # Increase timeout if we add more difficult tests that take longer!
     timeout-minutes: 300
-    needs: apt
+#     needs: apt
     strategy:
       max-parallel: 5
       fail-fast: false
