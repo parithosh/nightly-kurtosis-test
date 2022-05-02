@@ -15,13 +15,13 @@ env:
     GETH_IMAGE: "parithoshj/geth"
     NETHERMIND_IMAGE: "nethermindeth/nethermind"
 jobs:
-  apt:
-    name: apt
-    runs-on: kurtosis
-    steps:
-      - name: Update kurtosis to latest and set metrics choice
-        shell: bash
-        run: sudo apt update && sudo apt upgrade -y kurtosis-cli
+#   apt:
+#     name: apt
+#     runs-on: kurtosis
+#     steps:
+#       - name: Update kurtosis to latest and set metrics choice
+#         shell: bash
+#         run: sudo apt update && sudo apt upgrade -y kurtosis-cli
   kurtosis:
     name: kurtosis
     runs-on: kurtosis
