@@ -22,11 +22,11 @@ then
     echo "gcr.io/prysmaticlabs/prysm/beacon-chain:latest,gcr.io/prysmaticlabs/prysm/validator:latest"
 elif [[ $1 == "nethermind" ]]
 then
-    echo "nethermindeth/nethermind:kiln_shadowfork_0.1"
+    echo "nethermindeth/nethermind:kiln_shadowfork"
 elif [[ $1 == "besu" ]]
 then
     echo "hyperledger/besu:develop"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "kurtosistech/eth2-merge-kurtosis-module:0.4.16"
+    echo "kurtosistech/eth2-merge-kurtosis-module:0.4.17"
 fi

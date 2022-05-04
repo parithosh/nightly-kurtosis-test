@@ -23,9 +23,9 @@ jobs:
     steps:
       - name: Checkout this repo
         uses: actions/checkout@master
-      - name: Update kurtosis to latest and set metrics choice
-        shell: bash
-        run: sudo apt update && sudo apt upgrade -y kurtosis-cli
+#       - name: Update kurtosis to latest and set metrics choice
+#         shell: bash
+#         run: sudo apt update && sudo apt upgrade -y kurtosis-cli
       - name: fetch image name
         id: fetch_image_name
         shell: bash
