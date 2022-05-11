@@ -26,6 +26,9 @@ then
 elif [[ $1 == "besu" ]]
 then
     echo "hyperledger/besu:develop"
+elif [[ $1 == "erigon" ]]
+then
+    echo "parithoshj/erigon:devel"
 elif [[ $1 == "kurtosis" ]]
 then
     echo "kurtosistech/eth2-merge-kurtosis-module:0.4.19"
