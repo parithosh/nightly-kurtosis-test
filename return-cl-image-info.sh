@@ -28,5 +28,5 @@ then
     echo "hyperledger/besu:develop"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "kurtosistech/eth2-merge-kurtosis-module:0.4.17"
+    echo "kurtosistech/eth2-merge-kurtosis-module:0.4.19"
 fi
