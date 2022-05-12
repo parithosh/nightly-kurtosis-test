@@ -34,18 +34,21 @@
     {
       "elType": "nethermind",
       "elImage": "{{ env['NETHERMIND_IMAGE'] }}",
+      "elExtraParams": ["--Merge.TerminalBlockNumber=null"],
       "clType": "teku",
       "clImage": "{{ env['TEKU_IMAGE'] }}"
     },
     {
       "elType": "nethermind",
       "elImage": "{{ env['NETHERMIND_IMAGE'] }}",
+      "elExtraParams": ["--Merge.TerminalBlockNumber=null"],
       "clType": "lighthouse",
       "clImage": "{{ env['LIGHTHOUSE_IMAGE'] }}"
     },
     {
       "elType": "nethermind",
       "elImage": "{{ env['NETHERMIND_IMAGE'] }}",
+      "elExtraParams": ["--Merge.TerminalBlockNumber=null"],
       "clType": "nimbus",
       "clImage": "{{ env['NIMBUS_IMAGE'] }}",
       "beaconExtraParams": ["--num-threads=4"]
@@ -53,12 +56,14 @@
     {
       "elType": "nethermind",
       "elImage": "{{ env['NETHERMIND_IMAGE'] }}",
+      "elExtraParams": ["--Merge.TerminalBlockNumber=null"],
       "clType": "prysm",
       "clImage": "{{ env['PRYSM_IMAGE'] }}"
     },
     {
       "elType": "nethermind",
       "elImage": "{{ env['NETHERMIND_IMAGE'] }}",
+      "elExtraParams": ["--Merge.TerminalBlockNumber=null"],
       "clType": "lodestar",
       "clImage": "{{ env['LODESTAR_IMAGE'] }}"
     }
