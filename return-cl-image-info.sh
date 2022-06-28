@@ -31,5 +31,6 @@ then
     echo "parithoshj/erigon:devel"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "kurtosistech/eth2-merge-kurtosis-module:latest"
+    #echo "kurtosistech/eth2-merge-kurtosis-module:latest"
+    echo "skylenet/eth2-merge-kurtosis-module:skylenet_fixup-to-latests-configs"
 fi
