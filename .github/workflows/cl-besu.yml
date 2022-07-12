@@ -1,5 +1,4 @@
 name: Scheduled cl-besu majority testnets
-# This workflow is triggered on pushes to the repository.
 on:
  workflow_dispatch:
  schedule:
@@ -13,7 +12,7 @@ env:
     LIGHTHOUSE_IMAGE: "sigp/lighthouse:latest-unstable"
     LODESTAR_IMAGE: "chainsafe/lodestar:next"
     GETH_IMAGE: "parithoshj/geth"
-    NETHERMIND_IMAGE: "nethermindeth/nethermind"
+    NETHERMIND_IMAGE: "nethermind/nethermind"
 jobs:
 #   apt:
 #     name: apt

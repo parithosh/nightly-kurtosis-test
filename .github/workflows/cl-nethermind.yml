@@ -1,5 +1,4 @@
 name: Scheduled cl-nethermind majority testnets
-# This workflow is triggered on pushes to the repository.
 on:
  workflow_dispatch:
  schedule:
@@ -13,7 +12,7 @@ env:
     LIGHTHOUSE_IMAGE: "sigp/lighthouse:latest-unstable"
     LODESTAR_IMAGE: "chainsafe/lodestar:next"
     GETH_IMAGE: "parithoshj/geth"
-    NETHERMIND_IMAGE: "nethermindeth/nethermind"
+    NETHERMIND_IMAGE: "nethermindeth/nethermind:merge_testing"
 jobs:
 #   apt:
 #     name: apt
