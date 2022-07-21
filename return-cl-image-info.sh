@@ -31,5 +31,5 @@ then
     echo "parithoshj/erigon:devel"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "parithoshj/kurtosis:remove-kiln-nethermind-x86"
+    echo "parithoshj/kurtosis:fix-erigon-x86"
 fi
