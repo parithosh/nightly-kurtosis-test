@@ -22,7 +22,7 @@ then
     echo "gcr.io/prysmaticlabs/prysm/beacon-chain:latest,gcr.io/prysmaticlabs/prysm/validator:latest"
 elif [[ $1 == "nethermind" ]]
 then
-    echo "nethermind/nethermind:1.13.4"
+    echo "nethermindeth/hive:latest"
 elif [[ $1 == "besu" ]]
 then
     echo "hyperledger/besu:develop"
@@ -31,5 +31,5 @@ then
     echo "parithoshj/erigon:devel"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "parithoshj/kurtosis:staticpeers-update-x86"
+    echo "parithoshj/kurtosis:remove-kiln-nethermind-x86"
 fi
