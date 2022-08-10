@@ -9,56 +9,44 @@
     {
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
+      "clType": "lighthouse",
+      "clImage": "{{ env['LIGHTHOUSE_IMAGE'] }}"
     },
     {
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
+      "clType": "teku",
+      "clImage": "{{ env['TEKU_IMAGE'] }}"
     },
     {
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
+      "clType": "teku",
+      "clImage": "{{ env['TEKU_IMAGE'] }}"
     },
      {
        "elType": "geth",
        "elImage": "{{ env['GETH_IMAGE'] }}",
-       "clType": "{{ env['CL_NAME'] }}",
-       "clImage": "{{ env['CL_IMAGE'] }}"
+      "clImage": "{{ env['NIMBUS_IMAGE'] }}",
+      "beaconExtraParams": ["--num-threads=4"]
      },
     {
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
+      "clImage": "{{ env['NIMBUS_IMAGE'] }}",
+      "beaconExtraParams": ["--num-threads=4"]
     },
     {
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
+      "clType": "prysm",
+      "clImage": "{{ env['PRYSM_IMAGE'] }}"
     },
     {
       "elType": "geth",
       "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
-    },
-    {
-      "elType": "geth",
-      "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
-    },
-    {
-      "elType": "geth",
-      "elImage": "{{ env['GETH_IMAGE'] }}",
-      "clType": "{{ env['CL_NAME'] }}",
-      "clImage": "{{ env['CL_IMAGE'] }}"
+      "clType": "prysm",
+      "clImage": "{{ env['PRYSM_IMAGE'] }}"
     }
   ],
   "network": {

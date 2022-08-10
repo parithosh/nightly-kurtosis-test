@@ -49,13 +49,13 @@ jobs:
           strict: true
           data_format: json
         env:
-            TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
-            NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
-            PRYSM_IMAGE: ${{ steps.fetch_image_name.outputs.prysm_image }}
-            LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
-            LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
-            GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
-            NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
+          TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
+          NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
+          PRYSM_IMAGE: ${{ steps.fetch_image_name.outputs.prysm_image }}
+          LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
+          LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
+          GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
+          NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id newname ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./config.json)"
       - name: Run kurtosis with the config

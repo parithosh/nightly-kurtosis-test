@@ -52,6 +52,7 @@ jobs:
           LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
           LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
+          ERIGON_IMAGE: ${{ steps.fetch_image_name.outputs.erigon_image }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-erigon.json)"
       - name: Run kurtosis with the config

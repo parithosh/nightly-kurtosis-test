@@ -51,12 +51,13 @@ jobs:
           strict: true
           data_format: json
         env:
-            TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
-            NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
-            PRYSM_IMAGE: ${{ steps.fetch_image_name.outputs.prysm_image }}
-            LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
-            LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
-            GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
+          TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
+          NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
+          PRYSM_IMAGE: ${{ steps.fetch_image_name.outputs.prysm_image }}
+          LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
+          LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
+          GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
+          BESU_IMAGE: ${{ steps.fetch_image_name.outputs.besu_image }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-besu.json)"
       - name: Run kurtosis with the config
