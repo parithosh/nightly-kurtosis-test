@@ -36,7 +36,7 @@ jobs:
         run: |
           echo "::set-output name=besu_image::$(./return-cl-image-info.sh besu)"
           echo "::set-output name=enclave_name::majority-besu"
-          echo "::set-output name=teku_image_name::$(./return-cl-image-info.sh teku)"
+          echo "::set-output name=teku_image::$(./return-cl-image-info.sh teku)"
           echo "::set-output name=nimbus_image::$(./fetch-latest-image-tags.sh ${{ env.NIMBUS_IMAGE }})"
           echo "::set-output name=prysm_image::$(./return-cl-image-info.sh prysm)"
           echo "::set-output name=lighthouse_image::$(./return-cl-image-info.sh lighthouse)"
