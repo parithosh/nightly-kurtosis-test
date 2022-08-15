@@ -34,7 +34,7 @@ jobs:
           echo "::set-output name=prysm_image::$(./return-cl-image-info.sh prysm)"
           echo "::set-output name=lighthouse_image::$(./return-cl-image-info.sh lighthouse)"
           echo "::set-output name=lodestar_image::$(./return-cl-image-info.sh lodestar)"
-          echo "::set-output name=teku_image_name::$(./return-cl-image-info.sh teku)"
+          echo "::set-output name=teku_image::$(./return-cl-image-info.sh teku)"
           echo "::set-output name=geth_image::$(./fetch-latest-image-tags.sh ${{ env.GETH_IMAGE }})"
           echo "::set-output name=kurtosis_image_name::$(./return-cl-image-info.sh kurtosis)"
       - name: Render Deployment YAML
@@ -52,7 +52,6 @@ jobs:
           LIGHTHOUSE_IMAGE: ${{ steps.fetch_image_name.outputs.lighthouse_image }}
           LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
-          ERIGON_IMAGE: ${{ steps.fetch_image_name.outputs.erigon_image }}
       - name: Run kurtosis with the config
         run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-erigon.json)"
       - name: Run kurtosis with the config
