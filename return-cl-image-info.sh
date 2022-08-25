@@ -7,29 +7,29 @@ echo $1:$IMAGE_NAME
 
 if [[ $1 == "teku" ]]
 then
-    echo "consensys/teku:22.8.0"
+    echo "consensys/teku:22.8.1"
 elif [[ $1 == "lighthouse" ]]
 then
-    echo "sigp/lighthouse:v2.5.1"
+    echo "sigp/lighthouse:v3.0.0"
 elif [[ $1 == "nimbus" ]]
 then
-    find_latest "parithoshj/nimbus"
+    echo "statusim/nimbus-eth2:amd64-v22.8.0"
 elif [[ $1 == "lodestar" ]]
 then
-    echo "chainsafe/lodestar:next"
+    echo "chainsafe/lodestar:v1.0.0"
 elif [[ $1 == "prysm" ]]
 then
-    echo "gcr.io/prysmaticlabs/prysm/beacon-chain:v2.1.4,gcr.io/prysmaticlabs/prysm/validator:v2.1.4"
+    echo "gcr.io/prysmaticlabs/prysm/beacon-chain:v3.0.0,gcr.io/prysmaticlabs/prysm/validator:v3.0.0"
 elif [[ $1 == "nethermind" ]]
 then
-    echo "nethermindeth/nethermind:goerli_testing"
+    echo "nethermind/nethermind:1.14.0"
 elif [[ $1 == "besu" ]]
 then
-    echo "hyperledger/besu:22.7.1-SNAPSHOT-openjdk-11-debug-amd64"
+    echo "hyperledger/besu:22.7.1"
 elif [[ $1 == "erigon" ]]
 then
     echo "parithoshj/erigon:devel"
 elif [[ $1 == "kurtosis" ]]
 then
-    echo "kurtosistech/eth2-merge-kurtosis-module:0.5.8"
+    echo "kurtosistech/eth2-merge-kurtosis-module:0.5.9"
 fi
