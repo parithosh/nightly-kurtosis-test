@@ -41,7 +41,7 @@ jobs:
         uses: cuchi/jinja2-action@v1.2.0
         with:
           template: ./cl-erigon.json.j2
-          output_file: ./$majority-erigon.json
+          output_file: ./majority-erigon.json
           strict: true
           data_format: json
         env:
