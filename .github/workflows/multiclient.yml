@@ -44,10 +44,10 @@ jobs:
       - name: Render Deployment YAML
         uses: cuchi/jinja2-action@v1.2.0
         with:
-          template: ./config.json.j2
-          output_file: ./config.json
+          template: ./config.yaml.j2
+          output_file: ./config.yaml
           strict: true
-          data_format: json
+          data_format: yaml
         env:
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
           NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
@@ -57,7 +57,7 @@ jobs:
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
           NETHERMIND_IMAGE: ${{ steps.fetch_image_name.outputs.nethermind_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id newname ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./config.json)"
+        run: kurtosis module exec --enclave-id newname ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./config.yaml)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump newname dumped_logs

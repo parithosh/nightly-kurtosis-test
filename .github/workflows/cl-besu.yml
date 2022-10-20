@@ -46,10 +46,10 @@ jobs:
       - name: Render Deployment YAML
         uses: cuchi/jinja2-action@v1.2.0
         with:
-          template: ./cl-besu.json.j2
-          output_file: ./majority-besu.json
+          template: ./cl-besu.yaml.j2
+          output_file: ./majority-besu.yaml
           strict: true
-          data_format: json
+          data_format: yaml
         env:
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
           NIMBUS_IMAGE: ${{ steps.fetch_image_name.outputs.nimbus_image }}
@@ -59,7 +59,7 @@ jobs:
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
           BESU_IMAGE: ${{ steps.fetch_image_name.outputs.besu_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-besu.json)"
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-besu.yaml)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}

@@ -1,0 +1,34 @@
+participants:
+- elType: geth
+  elImage: "{{ env['GETH_IMAGE'] }}"
+  clType: lighthouse
+  clImage: "{{ env['LIGHTHOUSE_IMAGE'] }}"
+- elType: nethermind
+  elImage: "{{ env['NETHERMIND_IMAGE'] }}"
+  clType: lighthouse
+  clImage: "{{ env['LIGHTHOUSE_IMAGE'] }}"
+- elType: nethermind
+  elImage: "{{ env['NETHERMIND_IMAGE'] }}"
+  clType: teku
+  clImage: "{{ env['TEKU_IMAGE'] }}"
+- elType: geth
+  elImage: "{{ env['GETH_IMAGE'] }}"
+  clType: teku
+  clImage: "{{ env['TEKU_IMAGE'] }}"
+network:
+  networkId: '3151908'
+  depositContractAddress: '0x4242424242424242424242424242424242424242'
+  secondsPerSlot: 12
+  slotsPerEpoch: 32
+  altairForkEpoch: 0
+  mergeForkEpoch: 0
+  totalTerminalDifficulty: 0
+  numValidatorKeysPerNode: 64
+  preregisteredValidatorKeysMnemonic: giant issue aisle success illegal bike spike
+    question tent bar rely arctic volcano long crawl hungry vocal artwork sniff fantasy
+    very lucky have athlete
+waitForMining: false
+waitForFinalization: true
+waitForVerifications: true
+verificationsEpochLimit: 5
+logLevel: info

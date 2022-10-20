@@ -40,10 +40,10 @@ jobs:
       - name: Render Deployment YAML
         uses: cuchi/jinja2-action@v1.2.0
         with:
-          template: ./cl-erigon.json.j2
-          output_file: ./majority-erigon.json
+          template: ./cl-erigon.yaml.j2
+          output_file: ./majority-erigon.yaml
           strict: true
-          data_format: json
+          data_format: yaml
         env:
           ERIGON_IMAGE: ${{ steps.fetch_image_name.outputs.erigon_image }}
           TEKU_IMAGE: ${{ steps.fetch_image_name.outputs.teku_image }}
@@ -53,7 +53,7 @@ jobs:
           LODESTAR_IMAGE: ${{ steps.fetch_image_name.outputs.lodestar_image }}
           GETH_IMAGE: ${{ steps.fetch_image_name.outputs.geth_image }}
       - name: Run kurtosis with the config
-        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-erigon.json)"
+        run: kurtosis module exec --enclave-id ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.kurtosis_image_name }} --execute-params "$(cat ./majority-erigon.yaml)"
       - name: Run kurtosis with the config
         if: always()
         run: kurtosis enclave dump ${{ steps.fetch_image_name.outputs.enclave_name }} ${{ steps.fetch_image_name.outputs.enclave_name }}
